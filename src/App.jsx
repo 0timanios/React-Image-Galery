@@ -6,6 +6,7 @@ import { Route, Routes } from 'react-router-dom';
 import ImageInfo from './pages/ImageInfo';
 import AdminPanel from './pages/AdminPanel';
 import NavBar from './components/NavBar';
+import LoginToAdmin from './pages/LoginToAdmin';
 
 // TODO: store in cache data and retrieve it from there (watch caching course)
 // TODO: autherntification to access the adminpanel
@@ -52,6 +53,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home Images={images}/>}></Route>
         <Route path='/imageInfo' element={<ImageInfo Images={images}/>}></Route>
+        <Route path='/login' element={<LoginToAdmin/>}></Route>
         <Route path='/adminPanel' element={<AdminPanel Images={images}/>}></Route>
       </Routes>
     </>

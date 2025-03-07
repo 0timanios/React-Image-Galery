@@ -1,4 +1,4 @@
-import { Client, Databases, Storage } from 'appwrite';
+import { Client, Databases, Storage, Account } from 'appwrite';
 
 // Initialize Appwrite client
 const client = new Client()
@@ -8,5 +8,6 @@ const client = new Client()
 // Initialize the database and storage services
 const databases = new Databases(client);
 const storage = new Storage(client);
+const account = new Account(client);
 
-export { client, databases, storage };
+export { client, databases, storage, account };
