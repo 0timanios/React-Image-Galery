@@ -8,7 +8,7 @@ export default function GalleryCard({image}) {
   return (
     <Link className='h-[25rem] w-[20rem] rounded-xl overflow-hidden' to={`/imageInfo?id=${image.id}`} onMouseEnter={()=>setTextVisibility('visible h-auto')} onMouseLeave={()=>setTextVisibility('hidden h-0')}>
         <div className="imageContainer w-full h-[20rem] rounded-xl overflow-hidden">
-            <img className="w-full h-full" src={image.imgLink} alt="An immage from gallery" />
+            <img className="h-full w-full" src={image.imgLink} alt="An immage from gallery" />
         </div>
         <div className={textVisibility}>
             <h4>{image.Name}</h4>
