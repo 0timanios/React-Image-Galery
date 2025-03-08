@@ -1,11 +1,12 @@
 import {React,useState,useEffect} from 'react'
 import { databases, storage, account} from '../appwrite';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 // TODO: take url in imgLink and push it with other data (check for mandatory ones) to the database so you can have a custom entry
 
 export default function AdminPanel() {
   const navigate = useNavigate();
+  const uselocation = useLocation()
   const [image, setImage] = useState(null);
   const [imgLink, setImgLink] = useState('');
 
@@ -15,6 +16,11 @@ export default function AdminPanel() {
 
   const [imgContainerVisibility, setImgContainerVisibility] = useState('visible h-auto');
   const [dbContainerVisibility, setDbContainerVisibility] = useState('hidden h-0');
+
+  useEffect(() => {
+    if(uselocation.pathname !== '/adminPanel')
+      sessionLogOut()
+  }, [uselocation.pathname]);
 
   const handleDbUpload = async ()=>{
     //TODO
@@ -30,8 +36,6 @@ export default function AdminPanel() {
       const res = await storage.createFile(import.meta.env.VITE_APPWRITE_BUCKET_ID,'unique()',image)
       const imgUrl = `https://cloud.appwrite.io/v1/storage/buckets/${import.meta.env.VITE_APPWRITE_BUCKET_ID}/files/${res.$id}/view?project=${import.meta.env.VITE_APPWRITE_PROJECT_ID}&mode=admin`;
 
-// https://cloud.appwrite.io/v1/storage/buckets/67c78206000a92429902/files/67ca614518225642112d/view?project=undefined
-// https://cloud.appwrite.io/v1/storage/buckets/67c78206000a92429902/files/67ca614518225642112d/view?project=67c7817d0022c8dbc5e9&mode=admin
       setImgLink(imgUrl)
       setImgContainerVisibility('hidden h-0')
       setDbContainerVisibility('visible h-auto')
@@ -49,7 +53,7 @@ export default function AdminPanel() {
       <button onClick={sessionLogOut}>Log out</button>
       <div className={imgContainerVisibility}>
         <h1>Add an image</h1>
-        <input type="file" accept='image/*' name="" id=""  onChange={handleFileChange}/>
+        <input className='cursor-pointer' type="file" accept='image/*' name="" id=""  onChange={handleFileChange}/>
         <button onClick={handleFileUpload}>Upload</button>
       </div>
       <div className={dbContainerVisibility}>

@@ -1,14 +1,36 @@
 @import "tailwindcss";
 
+@theme{
+  --color-primary-50: #f2f7fd;
+  --color-primary-100: #e4eefa;
+  --color-primary-200: #c3dcf4;
+  --color-primary-300: #8fbfea;
+  --color-primary-400: #539edd;
+  --color-primary-500: #2a7bc0;
+  --color-primary-600: #1d66ac;
+  --color-primary-700: #19528b;
+  --color-primary-800: #184674;
+  --color-primary-900: #1a3c60;
+  --color-primary-950: #112640;
+  --color-secondary-50: #fffbeb;
+  --color-secondary-100: #fff5c6;
+  --color-secondary-200: #ffe988;
+  --color-secondary-300: #ffde66;
+  --color-secondary-400: #ffc520;
+  --color-secondary-500: #f9a407;
+  --color-secondary-600: #dd7b02;
+  --color-secondary-700: #b75606;
+  --color-secondary-800: #94420c;
+  --color-secondary-900: #7a370d;
+  --color-secondary-950: #461b02;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #373737;
+  background-color: var(--color-primary-100);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -45,7 +67,6 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
 }

@@ -5,7 +5,7 @@ import GalleryCard from "./GalleryCard";
 export default function GalleryList(imgList) {
     const list = imgList.imgList
     return (
-    <ul className="grid grid-cols-2 gap-1 ">
+    <ul className="grid grid-cols-3 w-fit my-20 justify-self-center gap-16 h-[55rem]">
         {list && list.length>0? (list.map(img=>(
             <GalleryCard key={img.id} image={img} />
         ))) : (<div>No Images Found in here</div>)}
